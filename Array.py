@@ -33,19 +33,37 @@ class Array:
     def array(self):
         return self._value[0:self.__size]
     
+    def __repr__(self):
+        res = ''
+        for i in range(self.__size):
+            if i == self.__size-1:
+                res = res + str(self.__value[i])
+            else:
+                res = res + str(self.__value[i]) + ', '
+        return f'[{res}]'
+    
+
+def insertion(arr,size,pos,val):
+    for i in range(size,pos-1,-1):
+        arr[i+1] = arr[i]
+    arr[pos] = val
+    return 1
+
+size = int(input("Enter Array Size: "))
+
+arr = Array(size)
+
+for i in range(size):
+    arr._value[i] = input('Enter Value: ')
+    
+pos = int(input('Enter Inserting Position: '))
+val = int(input('Enter Inserting Value: '))
+
+arr.size = insertion(arr._value,size,pos,val)
+
+print(arr)
         
 
-arr = Array(10)
-for i in range(10):
-    arr._value[i] = i + 10
 
-pos = 9
-val = 101
-
-for i in range(arr.size,pos-1,-1):
-    arr._value[i+1] = arr._value[i]
-arr._value[pos] = val
-arr.size = 1
-print(arr.show)
 
 
